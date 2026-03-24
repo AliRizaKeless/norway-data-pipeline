@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 from datetime import datetime
 
 API_URL = "https://api.statbank.ssb.no:443/statbank/sq/10070628/"
@@ -12,10 +13,13 @@ def fetch_data():
 
 
 def save_data(data):
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    file_name = f"data_{timestamp}.json"
+    # Ensure data folder exists
+    os.makedirs("data", exist_ok=True)
 
-    with open(file_name, "w") as f:
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    file_name = f"data/data_{timestamp}.json"
+
+    with open(file_name, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
 
     print(f"Data saved: {file_name}")
