@@ -19,3 +19,10 @@ norway-data-pipeline/
 │   └── transform_data.py
 ├── requirements.txt
 └── README.md
+
+## Environment Variables
+
+Create a `.env` file in the project root and add:
+
+```env
+AZURE_CONNECTION_STRING=your_connection_string_here
