@@ -1,8 +1,12 @@
 import os
-from azure.storage.blob import BlobServiceClient
 from pathlib import Path
 
-CONNECTION_STRING = "REPLACE_WITH_YOUR_CONNECTION_STRING"
+from dotenv import load_dotenv
+from azure.storage.blob import BlobServiceClient
+
+load_dotenv()
+
+CONNECTION_STRING = os.getenv("AZURE_CONNECTION_STRING")
 CONTAINER_NAME = "data"
 
 
@@ -14,6 +18,9 @@ def get_latest_file():
 
 
 def upload_file(file_path):
+    if not CONNECTION_STRING:
+        raise ValueError("AZURE_CONNECTION_STRING is not set in the .env file")
+
     blob_service_client = BlobServiceClient.from_connection_string(CONNECTION_STRING)
 
     blob_client = blob_service_client.get_blob_client(
