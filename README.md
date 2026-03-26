@@ -43,4 +43,14 @@ Create a `.env` file in the project root and add:
 ```env
 AZURE_CONNECTION_STRING=your_connection_string_here
 
+## Azure Integration
+
+This project uploads processed data to Azure Blob Storage using Python.
+
+### Azure Components
+- Azure Storage Account
+- Blob Container (`data`)
+
+### Python Upload
+The pipeline uses the `azure-storage-blob` SDK to upload files into Azure Blob Storage.
 
