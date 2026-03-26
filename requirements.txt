@@ -1,3 +1,4 @@
+# Project dependencies for data pipeline
 requests
 pandas
 azure-storage-blob
