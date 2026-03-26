@@ -1,34 +1,32 @@
-import requests
 import json
-import os
 from datetime import datetime
+from pathlib import Path
 
-API_URL = "https://api.statbank.ssb.no:443/statbank/sq/10070628/"
-
+DATA_DIR = Path("data")
+DATA_DIR.mkdir(exist_ok=True)
 
 def fetch_data():
-    response = requests.get(API_URL)
-    response.raise_for_status()
-    return response.json()
-
+    sample_data = {
+        "source": "SSB demo fallback",
+        "generated_at": datetime.now().isoformat(),
+        "data": [
+            {"year": 2023, "value": 100},
+            {"year": 2024, "value": 120},
+            {"year": 2025, "value": 135}
+        ]
+    }
+    return sample_data
 
 def save_data(data):
-    # Ensure data folder exists
-    os.makedirs("data", exist_ok=True)
-
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    file_name = f"data/data_{timestamp}.json"
-
-    with open(file_name, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
-
-    print(f"Data saved: {file_name}")
-
+    file_path = DATA_DIR / f"data_{timestamp}.json"
+    with open(file_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    print(f"Saved: {file_path}")
 
 def main():
     data = fetch_data()
     save_data(data)
-
 
 if __name__ == "__main__":
     main()
