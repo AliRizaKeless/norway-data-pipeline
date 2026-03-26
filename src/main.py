@@ -5,6 +5,7 @@ from pathlib import Path
 DATA_DIR = Path("data")
 DATA_DIR.mkdir(exist_ok=True)
 
+# Fetch data from API or fallback source
 def fetch_data():
     sample_data = {
         "source": "SSB demo fallback",
