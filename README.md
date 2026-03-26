@@ -54,3 +54,6 @@ This project uploads processed data to Azure Blob Storage using Python.
 ### Python Upload
 The pipeline uses the `azure-storage-blob` SDK to upload files into Azure Blob Storage.
 
+## Status
+
+This project is actively being developed and improved.
