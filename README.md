@@ -23,16 +23,17 @@ The pipeline is designed to demonstrate core data engineering skills:
 
 ## Architecture
 
-SSB API  
-↓  
-Python pipeline  
-↓  
-Raw JSON storage  
-↓  
-Data transformation with pandas  
-↓  
-Processed output  
-↓  
+```text
+SSB API
+   ↓
+Python Pipeline
+   ↓
+Raw JSON Storage
+   ↓
+Data Transformation (pandas)
+   ↓
+Processed Output (CSV)
+   ↓
 Azure Blob Storage  
 
 ## How to Run
