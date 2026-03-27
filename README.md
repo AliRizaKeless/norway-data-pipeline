@@ -1,14 +1,39 @@
 # norway-data-pipeline
 
-End-to-end data pipeline using Norwegian public data (SSB), built with Python and deployed to Azure using Terraform.
+End-to-end data pipeline using Norwegian public data (SSB), built with Python and integrated with Azure Blob Storage.
+
+## Project Overview
+
+This project fetches data from Statistics Norway (SSB), stores the raw data locally, transforms it into a processed format, and uploads the result to Azure Blob Storage.
+
+The pipeline is designed to demonstrate core data engineering skills:
+- API data ingestion
+- local raw data storage
+- data transformation
+- cloud upload to Azure
+- fallback handling when external API access fails
 
 ## Tech Stack
 
 - Python
-- Azure Blob Storage
 - Pandas
 - REST API (SSB)
+- Azure Blob Storage
 - dotenv
+
+## Architecture
+
+SSB API  
+↓  
+Python pipeline  
+↓  
+Raw JSON storage  
+↓  
+Data transformation with pandas  
+↓  
+Processed output  
+↓  
+Azure Blob Storage  
 
 ## How to Run
 
@@ -18,42 +43,35 @@ python src/main.py
 python src/transform_data.py
 python src/upload_to_azure.py
 
-## Current Features
-- Fetches data from the SSB API
-- Stores raw JSON files in the `data/` folder
-- Transforms raw JSON into flat CSV output using pandas
-- Organizes raw and transformed data into separate folders
+Environment Variables
 
-## Project Structure
+Create a .env file in the project root and add:
 
-```bash
+AZURE_CONNECTION_STRING=your_connection_string_here
+
+Current Features
+Fetches data from the SSB API
+Stores raw JSON locally
+Transforms JSON into CSV
+Uploads processed data to Azure Blob Storage
+Supports fallback local data if API access fails
+
+Project Structure
 norway-data-pipeline/
 ├── data/
 ├── output/
 ├── src/
 │   ├── main.py
-│   └── transform_data.py
+│   ├── transform_data.py
+│   └── upload_to_azure.py
+├── .env.example
+├── .gitignore
 ├── requirements.txt
 └── README.md
 
-## Environment Variables
+Next Steps
+Add Terraform for Azure infrastructure
+Add better logging
+Add automated pipeline execution
+Improve error handling
 
-Create a `.env` file in the project root and add:
-
-```env
-AZURE_CONNECTION_STRING=your_connection_string_here
-
-## Azure Integration
-
-This project uploads processed data to Azure Blob Storage using Python.
-
-### Azure Components
-- Azure Storage Account
-- Blob Container (`data`)
-
-### Python Upload
-The pipeline uses the `azure-storage-blob` SDK to upload files into Azure Blob Storage.
-
-## Status
-
-This project is actively being developed and improved.
