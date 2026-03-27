@@ -6,7 +6,7 @@ from azure.storage.blob import BlobServiceClient
 
 load_dotenv()
 
-CONNECTION_STRING = os.getenv("AZURE_CONNECTION_STRING")
+CONNECTION_STRING = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
 CONTAINER_NAME = "data"
 
 

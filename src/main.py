@@ -1,4 +1,5 @@
 import json
+from upload_to_azure import upload_file
 from datetime import datetime
 from pathlib import Path
 
@@ -24,14 +25,17 @@ def save_data(data):
     with open(file_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     print(f"Saved: {file_path}")
+    return file_path
 
 def main():
+    print("Starting pipeline...")
+
     data = fetch_data()
-    save_data(data)
+    file_path = save_data(data)
+
+    upload_file(file_path)
+
+    print("Pipeline finished successfully")
 
 if __name__ == "__main__":
     main()
-
-    print("Starting pipeline...")
-
-    print("Pipeline finished successfully")

@@ -1,0 +1,18 @@
+{
+  "source": "SSB demo fallback",
+  "generated_at": "2026-03-27T12:59:41.989235",
+  "data": [
+    {
+      "year": 2023,
+      "value": 100
+    },
+    {
+      "year": 2024,
+      "value": 120
+    },
+    {
+      "year": 2025,
+      "value": 135
+    }
+  ]
+}
