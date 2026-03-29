@@ -76,3 +76,4 @@ Add better logging
 Add automated pipeline execution
 Improve error handling
 
+tests
