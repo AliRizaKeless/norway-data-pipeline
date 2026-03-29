@@ -75,5 +75,3 @@ Add Terraform for Azure infrastructure
 Add better logging
 Add automated pipeline execution
 Improve error handling
-
-tests
