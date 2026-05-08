@@ -1,11 +1,23 @@
-from config import (
-    RAW_DATA_DIR,
-    PROCESSED_DATA_DIR,
-    LOG_DIR,
-    AZURE_CONTAINER_NAME,
-)
+from src.ingest import run_ingestion
+from src.transform import run_transformation
+from src.upload import run_upload
 
-print("RAW DATA:", RAW_DATA_DIR)
-print("PROCESSED DATA:", PROCESSED_DATA_DIR)
-print("LOG DIR:", LOG_DIR)
-print("AZURE CONTAINER:", AZURE_CONTAINER_NAME)
+
+def run_pipeline() -> None:
+    """
+    Run the full ETL pipeline:
+    1. Ingest raw data
+    2. Transform raw data into processed CSV
+    3. Upload processed CSV to Azure Blob Storage
+    """
+    print("Starting Norway data pipeline...")
+
+    raw_file_path = run_ingestion()
+    processed_file_path = run_transformation(raw_file_path)
+    run_upload(processed_file_path)
+
+    print("Pipeline completed successfully.")
+
+
+if __name__ == "__main__":
+    run_pipeline()

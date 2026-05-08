@@ -1,41 +1,49 @@
 import json
-from upload_to_azure import upload_file
 from datetime import datetime
 from pathlib import Path
 
-DATA_DIR = Path("data")
-DATA_DIR.mkdir(exist_ok=True)
+from src.config import RAW_DATA_DIR
 
-# Fetch data from API or fallback source
+
 def fetch_data():
+    """
+    Fetch data from Statistics Norway API.
+
+    Currently returns fallback sample data.
+    Real API integration will be added in the next step.
+    """
     sample_data = {
         "source": "SSB demo fallback",
         "generated_at": datetime.now().isoformat(),
         "data": [
             {"year": 2023, "value": 100},
             {"year": 2024, "value": 120},
-            {"year": 2025, "value": 135}
-        ]
+            {"year": 2025, "value": 135},
+        ],
     }
     return sample_data
 
-def save_data(data):
+
+def save_raw_data(data: dict) -> Path:
+    """
+    Save raw API response as a timestamped JSON file.
+    """
+    RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
+
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    file_path = DATA_DIR / f"data_{timestamp}.json"
-    with open(file_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-    print(f"Saved: {file_path}")
+    file_path = RAW_DATA_DIR / f"ssb_raw_{timestamp}.json"
+
+    with open(file_path, "w", encoding="utf-8") as file:
+        json.dump(data, file, indent=2, ensure_ascii=False)
+
+    print(f"Raw data saved: {file_path}")
     return file_path
 
-def main():
-    print("Starting pipeline...")
 
+def run_ingestion() -> Path:
+    """
+    Run ingestion step and return saved raw file path.
+    """
     data = fetch_data()
-    file_path = save_data(data)
-
-    upload_file(file_path)
-
-    print("Pipeline finished successfully")
-
-if __name__ == "__main__":
-    main()
+    raw_file_path = save_raw_data(data)
+    return raw_file_path
