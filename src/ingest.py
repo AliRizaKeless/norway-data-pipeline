@@ -1,29 +1,27 @@
 import json
 from datetime import datetime
 from pathlib import Path
+import requests
 
-from src.config import RAW_DATA_DIR
+from src.config import RAW_DATA_DIR, SSB_API_URL
 from src.logger import get_logger
 
 logger = get_logger()
 
-def fetch_data():
+def fetch_data() -> dict:
     """
-    Fetch data from Statistics Norway API.
-
-    Currently returns fallback sample data.
-    Real API integration will be added in the next step.
+    Fetch CPI data from Statistics Norway API.
     """
-    sample_data = {
-        "source": "SSB demo fallback",
-        "generated_at": datetime.now().isoformat(),
-        "data": [
-            {"year": 2023, "value": 100},
-            {"year": 2024, "value": 120},
-            {"year": 2025, "value": 135},
-        ],
+    params = {
+        "valuecodes[Tid]": "top(3)",
+        "valuecodes[VareTjenesteGrp]": "??",
+        "valuecodes[ContentsCode]": "KpiIndMnd",
     }
-    return sample_data
+
+    response = requests.get(SSB_API_URL, params=params, timeout=30)
+    response.raise_for_status()
+
+    return response.json()
 
 
 def save_raw_data(data: dict) -> Path:

@@ -1,0 +1,43 @@
+commodity_group_code,commodity_group,period,period_label,cpi_index,source,updated
+00,Total,2026M01,2026M01,101.6,Statistics Norway,2026-04-10T06:00:00Z
+00,Total,2026M02,2026M02,102.2,Statistics Norway,2026-04-10T06:00:00Z
+00,Total,2026M03,2026M03,102.4,Statistics Norway,2026-04-10T06:00:00Z
+01,Food and non-alcoholic beverages,2026M01,2026M01,101.0,Statistics Norway,2026-04-10T06:00:00Z
+01,Food and non-alcoholic beverages,2026M02,2026M02,101.9,Statistics Norway,2026-04-10T06:00:00Z
+01,Food and non-alcoholic beverages,2026M03,2026M03,99.4,Statistics Norway,2026-04-10T06:00:00Z
+02,"Alcoholic beverages, tobacco and narcotics",2026M01,2026M01,102.1,Statistics Norway,2026-04-10T06:00:00Z
+02,"Alcoholic beverages, tobacco and narcotics",2026M02,2026M02,102.8,Statistics Norway,2026-04-10T06:00:00Z
+02,"Alcoholic beverages, tobacco and narcotics",2026M03,2026M03,102.9,Statistics Norway,2026-04-10T06:00:00Z
+03,Clothing and footwear,2026M01,2026M01,97.1,Statistics Norway,2026-04-10T06:00:00Z
+03,Clothing and footwear,2026M02,2026M02,98.8,Statistics Norway,2026-04-10T06:00:00Z
+03,Clothing and footwear,2026M03,2026M03,101.9,Statistics Norway,2026-04-10T06:00:00Z
+04,"Housing, water, electricity, gas and other fuels",2026M01,2026M01,103.0,Statistics Norway,2026-04-10T06:00:00Z
+04,"Housing, water, electricity, gas and other fuels",2026M02,2026M02,103.3,Statistics Norway,2026-04-10T06:00:00Z
+04,"Housing, water, electricity, gas and other fuels",2026M03,2026M03,102.9,Statistics Norway,2026-04-10T06:00:00Z
+05,"Furnishings, household equipment and routine household maintenance",2026M01,2026M01,101.2,Statistics Norway,2026-04-10T06:00:00Z
+05,"Furnishings, household equipment and routine household maintenance",2026M02,2026M02,100.7,Statistics Norway,2026-04-10T06:00:00Z
+05,"Furnishings, household equipment and routine household maintenance",2026M03,2026M03,101.8,Statistics Norway,2026-04-10T06:00:00Z
+06,Health,2026M01,2026M01,100.4,Statistics Norway,2026-04-10T06:00:00Z
+06,Health,2026M02,2026M02,102.9,Statistics Norway,2026-04-10T06:00:00Z
+06,Health,2026M03,2026M03,103.6,Statistics Norway,2026-04-10T06:00:00Z
+07,Transport,2026M01,2026M01,101.4,Statistics Norway,2026-04-10T06:00:00Z
+07,Transport,2026M02,2026M02,102.2,Statistics Norway,2026-04-10T06:00:00Z
+07,Transport,2026M03,2026M03,103.5,Statistics Norway,2026-04-10T06:00:00Z
+08,Information and communication,2026M01,2026M01,98.7,Statistics Norway,2026-04-10T06:00:00Z
+08,Information and communication,2026M02,2026M02,101.7,Statistics Norway,2026-04-10T06:00:00Z
+08,Information and communication,2026M03,2026M03,102.9,Statistics Norway,2026-04-10T06:00:00Z
+09,"Recreation, sport and culture",2026M01,2026M01,102.2,Statistics Norway,2026-04-10T06:00:00Z
+09,"Recreation, sport and culture",2026M02,2026M02,101.7,Statistics Norway,2026-04-10T06:00:00Z
+09,"Recreation, sport and culture",2026M03,2026M03,102.0,Statistics Norway,2026-04-10T06:00:00Z
+10,Education services,2026M01,2026M01,101.6,Statistics Norway,2026-04-10T06:00:00Z
+10,Education services,2026M02,2026M02,101.6,Statistics Norway,2026-04-10T06:00:00Z
+10,Education services,2026M03,2026M03,101.6,Statistics Norway,2026-04-10T06:00:00Z
+11,Restaurants and accommodation services,2026M01,2026M01,103.2,Statistics Norway,2026-04-10T06:00:00Z
+11,Restaurants and accommodation services,2026M02,2026M02,103.2,Statistics Norway,2026-04-10T06:00:00Z
+11,Restaurants and accommodation services,2026M03,2026M03,104.6,Statistics Norway,2026-04-10T06:00:00Z
+12,Insurance and financial services,2026M01,2026M01,105.2,Statistics Norway,2026-04-10T06:00:00Z
+12,Insurance and financial services,2026M02,2026M02,105.2,Statistics Norway,2026-04-10T06:00:00Z
+12,Insurance and financial services,2026M03,2026M03,105.4,Statistics Norway,2026-04-10T06:00:00Z
+13,"Personal care, social protection and miscellaneous goods and services",2026M01,2026M01,98.9,Statistics Norway,2026-04-10T06:00:00Z
+13,"Personal care, social protection and miscellaneous goods and services",2026M02,2026M02,99.7,Statistics Norway,2026-04-10T06:00:00Z
+13,"Personal care, social protection and miscellaneous goods and services",2026M03,2026M03,100.0,Statistics Norway,2026-04-10T06:00:00Z

@@ -31,17 +31,50 @@ def load_raw_data(file_path: Path) -> dict:
 
 def transform_to_dataframe(raw_data: dict) -> pd.DataFrame:
     """
-    Transform raw JSON data into a pandas DataFrame.
+    Transform SSB JSON-stat response into a pandas DataFrame.
     """
-    records = raw_data.get("data", [])
+    dimensions = raw_data.get("dimension", {})
+    values = raw_data.get("value", [])
+    dimension_ids = raw_data.get("id", [])
+    sizes = raw_data.get("size", [])
 
-    if not records:
-        raise ValueError("Raw data does not contain a valid 'data' field.")
+    if not dimensions or not values or not dimension_ids or not sizes:
+        raise ValueError("Raw SSB data does not contain valid JSON-stat fields.")
+
+    records = []
+
+    vare_dimension = dimensions.get("VareTjenesteGrp", {})
+    time_dimension = dimensions.get("Tid", {})
+
+    vare_categories = vare_dimension.get("category", {}).get("label", {})
+    time_categories = time_dimension.get("category", {}).get("label", {})
+
+    vare_codes = list(vare_categories.keys())
+    time_codes = list(time_categories.keys())
+
+    for vare_index, vare_code in enumerate(vare_codes):
+        for time_index, time_code in enumerate(time_codes):
+            value_index = vare_index * len(time_codes) + time_index
+
+            if value_index >= len(values):
+                continue
+
+            records.append(
+                {
+                    "commodity_group_code": vare_code,
+                    "commodity_group": vare_categories.get(vare_code),
+                    "period": time_code,
+                    "period_label": time_categories.get(time_code),
+                    "cpi_index": values[value_index],
+                    "source": raw_data.get("source"),
+                    "updated": raw_data.get("updated"),
+                }
+            )
 
     df = pd.DataFrame(records)
 
-    df["source"] = raw_data.get("source")
-    df["generated_at"] = raw_data.get("generated_at")
+    if df.empty:
+        raise ValueError("Transformation produced an empty DataFrame.")
 
     return df
 

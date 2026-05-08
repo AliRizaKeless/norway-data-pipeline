@@ -13,4 +13,4 @@ LOG_DIR = BASE_DIR / "logs"
 AZURE_CONNECTION_STRING = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
 AZURE_CONTAINER_NAME = os.getenv("AZURE_CONTAINER_NAME")
 
-SSB_API_URL = "https://data.ssb.no/api/v0/en/table/03013/"
+SSB_API_URL = "https://data.ssb.no/api/pxwebapi/v2/tables/14700/data?lang=en&outputFormat=json-stat2"
