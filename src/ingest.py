@@ -3,7 +3,9 @@ from datetime import datetime
 from pathlib import Path
 
 from src.config import RAW_DATA_DIR
+from src.logger import get_logger
 
+logger = get_logger()
 
 def fetch_data():
     """
@@ -36,7 +38,7 @@ def save_raw_data(data: dict) -> Path:
     with open(file_path, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=2, ensure_ascii=False)
 
-    print(f"Raw data saved: {file_path}")
+    logger.info(f"Raw data saved: {file_path}")
     return file_path
 
 

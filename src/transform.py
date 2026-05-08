@@ -5,7 +5,9 @@ from pathlib import Path
 import pandas as pd
 
 from src.config import PROCESSED_DATA_DIR, RAW_DATA_DIR
+from src.logger import get_logger
 
+logger = get_logger()
 
 def get_latest_raw_file() -> Path:
     """
@@ -55,7 +57,7 @@ def save_processed_data(df: pd.DataFrame) -> Path:
 
     df.to_csv(output_file, index=False)
 
-    print(f"Processed data saved: {output_file}")
+    logger.info(f"Processed data saved: {output_file}")
     return output_file
 
 

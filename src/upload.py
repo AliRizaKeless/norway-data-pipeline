@@ -7,6 +7,9 @@ from src.config import (
     AZURE_CONTAINER_NAME,
 )
 
+from src.logger import get_logger
+
+logger = get_logger()
 
 def upload_file(file_path: Path) -> None:
     """
@@ -35,7 +38,7 @@ def upload_file(file_path: Path) -> None:
     with open(file_path, "rb") as data:
         blob_client.upload_blob(data, overwrite=True)
 
-    print(f"Uploaded file to Azure Blob Storage: {file_path.name}")
+    logger.info(f"Uploaded file to Azure Blob Storage: {file_path.name}")
 
 
 def run_upload(file_path: Path) -> None:
