@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 from pathlib import Path
+from src.data_quality import validate_dataframe
 
 import pandas as pd
 
@@ -103,6 +104,7 @@ def run_transformation(raw_file_path: Path | None = None) -> Path:
 
     raw_data = load_raw_data(raw_file_path)
     df = transform_to_dataframe(raw_data)
+    validate_dataframe(df)
     processed_file_path = save_processed_data(df)
 
     return processed_file_path
