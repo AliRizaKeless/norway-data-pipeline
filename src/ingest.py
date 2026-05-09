@@ -3,11 +3,16 @@ from datetime import datetime
 from pathlib import Path
 import requests
 
+from tenacity import retry, stop_after_attempt, wait_exponential
 from src.config import RAW_DATA_DIR, SSB_API_URL
 from src.logger import get_logger
 
 logger = get_logger()
 
+@retry(
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=2, max=10),
+)
 def fetch_data() -> dict:
     """
     Fetch CPI data from Statistics Norway API.
