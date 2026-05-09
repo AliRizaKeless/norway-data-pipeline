@@ -1,77 +1,101 @@
-# norway-data-pipeline
+Norway Data Pipeline
 
-End-to-end data pipeline using Norwegian public data (SSB), built with Python and integrated with Azure Blob Storage.
+A production-style ETL pipeline that ingests real public data from Statistics Norway (SSB), transforms JSON-stat datasets into analytics-ready CSV files, validates data quality, and uploads processed outputs to Azure Blob Storage.
 
-## Project Overview
-
-This project fetches data from Statistics Norway (SSB), stores the raw data locally, transforms it into a processed format, and uploads the result to Azure Blob Storage.
-
-The pipeline is designed to demonstrate core data engineering skills:
-- API data ingestion
-- local raw data storage
-- data transformation
-- cloud upload to Azure
-- fallback handling when external API access fails
-
-## Tech Stack
-
-- Python
-- Pandas
-- REST API (SSB)
-- Azure Blob Storage
-- dotenv
-
-## Architecture
-
-```text
+Architecture
 SSB API
    ↓
-Python Pipeline
+Raw JSON ingestion
    ↓
-Raw JSON Storage
+Data transformation with pandas
    ↓
-Data Transformation (pandas)
+Data quality validation
    ↓
-Processed Output (CSV)
+Processed CSV generation
    ↓
-Azure Blob Storage  
+Azure Blob Storage upload
 
-## How to Run
+Features
+- Real-time ingestion from the Statistics Norway API
+- Modular ETL pipeline architecture
+- JSON-stat to tabular transformation
+- Structured logging and exception handling
+- Retry logic for resilient API ingestion
+- Data quality validation checks
+- Azure Blob Storage integration
+- Terraform infrastructure provisioning
+- Automated testing with pytest
+- GitHub Actions CI workflow
+- Docker-ready project structure
 
-```bash
-pip install -r requirements.txt
-python src/main.py
-python src/transform_data.py
-python src/upload_to_azure.py
-
-Environment Variables
-
-Create a .env file in the project root and add:
-
-AZURE_CONNECTION_STRING=your_connection_string_here
-
-Current Features
-Fetches data from the SSB API
-Stores raw JSON locally
-Transforms JSON into CSV
-Uploads processed data to Azure Blob Storage
-Supports fallback local data if API access fails
+Tech Stack
+- Python
+- pandas
+- Azure Blob Storage
+- Terraform
+- GitHub Actions
+- pytest
+- Docker
+- tenacity
+- requests
 
 Project Structure
 norway-data-pipeline/
+│
 ├── data/
-├── output/
+│   ├── raw/
+│   └── processed/
+│
+├── logs/
+├── infra/
 ├── src/
-│   ├── main.py
-│   ├── transform_data.py
-│   └── upload_to_azure.py
-├── .env.example
-├── .gitignore
+├── tests/
+│
+├── Dockerfile
 ├── requirements.txt
 └── README.md
 
-Next Steps
-Add Terraform for Azure infrastructure
-Add better logging
-Add automated pipeline execution
-Improve error handling
+Running the Pipeline
+
+Install dependencies:
+pip install -r requirements.txt
+
+Run the ETL pipeline:
+python -m src.pipeline
+
+Run tests:
+python -m pytest
+
+Infrastructure
+Terraform is used to provision:
+- Azure Resource Group
+- Azure Storage Account
+- Azure Blob Container
+
+Terraform files are located in:
+infra/
+
+CI/CD
+GitHub Actions automatically runs tests on:
+- Push
+- Pull requests
+
+Workflow configuration:
+.github/workflows/ci.yml
+
+Example Output
+Processed datasets are saved as timestamped CSV files:
+data/processed/ssb_processed_20260509_124720.csv
+
+Raw API snapshots are stored as JSON:
+data/raw/ssb_raw_20260509_124720.json
+
+Future Improvements
+- Scheduled pipeline execution
+- Data warehouse integration
+- Dashboarding and visualization
+- Monitoring and alerting
+- Container deployment
+
+Author
+Ali Riza Keless
