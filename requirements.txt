@@ -3,3 +3,4 @@ requests
 pandas
 azure-storage-blob
 python-dotenv
+pytest
