@@ -1,6 +1,6 @@
 Norway Data Pipeline
 
-A production-style ETL pipeline that ingests real public data from Statistics Norway (SSB), transforms JSON-stat datasets into analytics-ready CSV files, validates data quality, and uploads processed outputs to Azure Blob Storage.
+A scalable, modular, cloud-native ETL pipeline that ingests real public data from Statistics Norway (SSB), transforms JSON-stat datasets into analytics-ready CSV files, validates data quality, and uploads processed outputs to Azure Blob Storage.
 
 Architecture
 
