@@ -3,6 +3,8 @@ Norway Data Pipeline
 A production-style ETL pipeline that ingests real public data from Statistics Norway (SSB), transforms JSON-stat datasets into analytics-ready CSV files, validates data quality, and uploads processed outputs to Azure Blob Storage.
 
 Architecture
+
+```
 SSB API
    ↓
 Raw JSON ingestion
@@ -14,6 +16,7 @@ Data quality validation
 Processed CSV generation
    ↓
 Azure Blob Storage upload
+```
 
 Features
 - Real-time ingestion from the Statistics Norway API
@@ -40,6 +43,8 @@ Tech Stack
 - requests
 
 Project Structure
+
+```
 norway-data-pipeline/
 │
 ├── data/
@@ -54,6 +59,7 @@ norway-data-pipeline/
 ├── Dockerfile
 ├── requirements.txt
 └── README.md
+```
 
 Running the Pipeline
 
